@@ -12,7 +12,7 @@ class TopCocktail::CLI
     end
 
     def cocktail_menu  
-        puts " ********************"
+        puts " *********************"
         puts "   "     
         puts "Top Favorite Cocktails"
         puts "Choose a line number for further information."
