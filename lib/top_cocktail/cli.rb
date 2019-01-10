@@ -1,69 +1,68 @@
 class TopCocktail::CLI
-     
-    def call
-        #method to call other methods
+    attr_accessor :name, :menu
+    
+    def call 
+       TopCocktail::Scraper.new.set_info
+       start
+    end
+    def start
        cocktail_menu
        selection
        thanks       
     end
 
-    def cocktail_menu       
+    def cocktail_menu  
+        puts " ********************"
+        puts "   "     
         puts "Top Favorite Cocktails"
-        puts "Choose a line number for further ingredients and recipe!"
-        @menu = TopCocktail::Scraper.menu
-        @menu.each.with_index(1) do |drink, i|
-            puts "#{i}. #{drink}"
-        end
+        puts "Choose a line number for further information."
+        puts "  "
+        @drinks = TopCocktail::Cocktail.all
+        @menu = []
+        @drinks.collect do |item|
+            item.name.each.with_index(1) do |drink, index|
+                @menu << drink  
+                puts "#{index}. #{drink}"
+            end
+        end  
     end
-
-  ## need to have methods which retrieve information - description, ingredients and directions.
+  
     def selection
         input = gets.chomp.to_i  
 
-        @information = TopCocktail::Scraper.describe
-        @recipes = TopCocktail::Scraper.ingredients
-        @instructions = TopCocktail::Scraper.directions
+        selection = @menu[input.to_i-1]
+        @drinks.each do |item|
+            if input >0 && input <=10
+                item.ingredients.each.with_index(1) do |recipe, index|
+                    if input == index
+                        puts " "
+                        puts "You chose the #{selection}! - Here is the recipe -" 
+                        puts " "
+                        puts "#{recipe}"
+                    end #input
+                end  #ingredients
+
+                item.directions.each.with_index(1) do |instructions, index|  
+                    if input == index
+                        puts " "
+                       puts "Directions: #{instructions}"
+                    end #input
+                end #directions
+            else
+                puts "  "
+                puts "!! Not a Valid Entry. Please Try Again."
+                start
+            end #input
+        end #drinks
+    end 
        
-        if input >0 && input <= @menu.length
-            selection = @menu[input.to_i-1]            
-            puts "You Chose the#{selection}! "
-        else
-            puts "That is not a valid choice. Try again."
-            call
-        end
-    
-        @information.each.with_index(1) do |desc, i|
-            if input == i
-                puts "Information: #{desc}"
-            else
-            nil
-            end
-        end
-
-        @recipes.each.with_index(1) do |rec, i|
-            if input == i
-                puts "Ingredients: #{rec}"
-            else
-            nil
-            end
-        end
-
-        @instructions.each.with_index(1) do |todo, i|
-            if input == i
-                puts "Directions: #{todo}"
-            else
-            nil
-            end
-        end
-    end
-        
     def thanks
+        puts "  "
         puts "*** Would you like to see another cocktail? (Y / N)"
 
         input = gets.strip.downcase
-
         if input == "yes" || input == "y"
-            call
+         start
         else
              puts "*** Thanks for Visiting Top Favorite Cocktails ***"
         end

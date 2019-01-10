@@ -3,9 +3,9 @@
 Flatiron School Online Immersive Engineering Course Project
 CLI Data Gem Portfolio Project
 
-The purpose of this project is to use various aspects of Command Line Interface, Object Oriented Ruby, Collaborating Objects and Scraping to build a CLI application. 
+The purpose of this project is to use Object Oriented Ruby, Collaborating Objects and Scraping to build a CLI application. 
+This project is 10 Top Favorite Cocktails with recipes.
 
-**This is a work in progress and not nearly done. - 12/29/2018
 
 ## Installation
 
@@ -25,13 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Application will show a list of 10 Top Favorite Cocktails. User will be able to select from a menu and the recipe will be returned.
 
 ## Contributing
 
@@ -43,4 +37,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the TopBourbon project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/top_bourbon/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the TopCocktail project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[Jcg408]/top_cocktail/blob/master/CODE_OF_CONDUCT.md).
