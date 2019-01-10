@@ -1,6 +1,6 @@
 # TopCocktail
 
-Flatiron School Online Immersive Engineering Course Project
+Flatiron School Online Immersive Software Engineering Course 
 CLI Data Gem Portfolio Project
 
 The purpose of this project is to use Object Oriented Ruby, Collaborating Objects and Scraping to build a CLI application. 
