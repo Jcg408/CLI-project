@@ -12,9 +12,11 @@ class TopCocktail::CLI
     end
 
     def cocktail_menu  
-        puts " *********************"
+        puts " ***********************************"
         puts "   "     
-        puts "Top Favorite Cocktails"
+        puts "Welcome to 10 Top Favorite Cocktails!"
+        puts "  "
+        puts " ***********************************"        
         puts "Choose a line number for further information."
         puts "  "
         @drinks = TopCocktail::Cocktail.all
