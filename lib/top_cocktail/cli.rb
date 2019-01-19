@@ -1,10 +1,10 @@
 class TopCocktail::CLI
-    attr_accessor :name, :menu
-    
+       
     def call 
        TopCocktail::Scraper.new.set_info
        start
     end
+
     def start
        cocktail_menu
        selection
@@ -12,50 +12,37 @@ class TopCocktail::CLI
     end
 
     def cocktail_menu  
-        puts " ***********************************"
+        puts " ********************"
         puts "   "     
-        puts "Welcome to 10 Top Favorite Cocktails!"
-        puts "  "
-        puts " ***********************************"        
+        puts "Top 10 Favorite Cocktails"
         puts "Choose a line number for further information."
         puts "  "
-        @drinks = TopCocktail::Cocktail.all
-        @menu = []
-        @drinks.collect do |item|
-            item.name.each.with_index(1) do |drink, index|
-                @menu << drink  
-                puts "#{index}. #{drink}"
-            end
-        end  
+        @cocktails = TopCocktail::Cocktail.all
+        @cocktails.select do |item|
+            item.name.each.with_index(1) do |drink_name, index|
+                puts "#{index}. #{drink_name}"  
+                puts " "  
+            end     
+        end
     end
   
     def selection
-        input = gets.chomp.to_i  
+        input = gets.chomp.to_i 
 
-        selection = @menu[input.to_i-1]
-        @drinks.each do |item|
-            if input >0 && input <=10
-                item.ingredients.each.with_index(1) do |recipe, index|
-                    if input == index
-                        puts " "
-                        puts "You chose the #{selection}! - Here is the recipe -" 
-                        puts " "
-                        puts "#{recipe}"
-                    end #input
-                end  #ingredients
-
-                item.directions.each.with_index(1) do |instructions, index|  
-                    if input == index
-                        puts " "
-                       puts "Directions: #{instructions}"
-                    end #input
-                end #directions
+        @cocktails.each do |cocktail|
+            if input > 0 && input <= cocktail.name.length                     
+                puts " "
+                puts "You chose the #{cocktail.name[input-1]}! - Here is the recipe -" 
+                puts " "
+                puts "#{cocktail.ingredients[input-1]} "
+                puts " "
+                puts "Directions: #{cocktail.directions[input-1]}"
             else
                 puts "  "
                 puts "!! Not a Valid Entry. Please Try Again."
                 start
-            end #input
-        end #drinks
+            end 
+        end 
     end 
        
     def thanks
@@ -64,9 +51,9 @@ class TopCocktail::CLI
 
         input = gets.strip.downcase
         if input == "yes" || input == "y"
-         start
+            start
         else
-             puts "*** Thanks for Visiting Top Favorite Cocktails ***"
+             puts "*** Thanks for Visiting Top 10 Favorite Cocktails ***"
         end
     end
 end
