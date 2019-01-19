@@ -3,8 +3,8 @@
 Flatiron School Online Immersive Software Engineering Course 
 CLI Data Gem Portfolio Project
 
-The purpose of this project is to use Object Oriented Ruby, Collaborating Objects and Scraping to build a CLI application. 
-This project is 10 Top Favorite Cocktails with recipes.
+The purpose of this project is to use object oriented Ruby, collaborating classes and Nokogiri scraping to build a CLI application. 
+The project scrapes data from a webpage and presents a user interface. The subject of the project is Top 10 Favorite Cocktails.
 
 
 ## Installation
@@ -25,7 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-Application will show a list of 10 Top Favorite Cocktails. User will be able to select from a menu and the recipe will be returned.
+Application will show a list of Top 10 Favorite Cocktails. User will be able to select from a menu and the recipe will be returned.
 
 ## Contributing
 
