@@ -9,15 +9,18 @@ class TopCocktail::Scraper
     end   
 
     def set_info
-        scrape_cocktails.collect do |info|
-            drink = {
-            name: info.css("h2").text.split(/\d+.\S./).drop(1),             
-            ingredients: info.css("p ~p").children.text.split("Instructions:"),
-            directions: info.css("ul").map(&:text)
-            }
-            TopCocktail::Cocktail.new(drink)
-            #    binding.pry
-        end
+        scrape_cocktails.each do |info|
+            names = info.css("h2").text.split(/\d+.\S./).drop(1)
+            ingredients = info.css("p ~p").children.text.split("Instructions:")
+            directions = info.css("ul").map(&:text)
+
+            names.each_with_index  do |name, index|
+               cocktail = TopCocktail::Cocktail.new
+               cocktail.name = name
+               cocktail.ingredients= ingredients[index]
+               cocktail.directions = directions[index]
+            end
+         end
     end  
 end
     
